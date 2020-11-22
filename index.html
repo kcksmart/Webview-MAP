@@ -1,0 +1,2893 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="mapbox/mapbox-gl.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        #map {
+            width: 841px;
+            height: 580px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+            <nav id="menu"></nav>
+              <div id="distance" class="distance-container"></div>
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="./mapbox/mapbox-gl.js"></script>
+        <script src="data/Entwurfselement_Hoehe_0.js"></script>
+        <script src="data/Entwurfselement_Lage_1.js"></script>
+        <script src="data/Entwurfselement_Ueberhoehung_2.js"></script>
+        <script src="data/Gleis_Strecke_Abschnitt_Hoehe_3.js"></script>
+        <script src="data/Gleis_Strecke_Abschnitt_Lage_4.js"></script>
+        <script src="data/Gleis_Strecke_Abschnitt_Ueberhoehung_5.js"></script>
+        <script src="data/Gleiskanten_6.js"></script>
+        <script src="data/Oberleitungsmasten_7.js"></script>
+        <script src="data/Signal_BUE_8.js"></script>
+        <script src="data/Signal_Hauptsignale_9.js"></script>
+        <script src="data/Signal_LF_10.js"></script>
+        <script src="data/Signal_NE_11.js"></script>
+        <script src="data/Signal_RA_12.js"></script>
+        <script src="data/Signal_RA12_13.js"></script>
+        <script src="data/Signal_SH_14.js"></script>
+        <script src="data/Signal_TS_15.js"></script>
+        <script src="data/Signal_Vorsignale_16.js"></script>
+<script src="./mapbox/style.js"></script>
+<script src="./js/Autolinker.min.js"></script>
+<script>
+var map = new mapboxgl.Map({
+ container: 'map',
+ style: styleJSON,
+ center: [8.067690123673978,51.11499895437954],
+ zoom: 17,
+ bearing: 360.0,
+ attributionControl: false
+});
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+map.addControl(new mapboxgl.AttributionControl({
+    customAttribution: '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://github.com/mapbox/mapbox-gl-js" target="_blank">Mapbox GL JS</a> &middot; <a href="https://qgis.org" target="_blank">QGIS</a>',
+    compact: false
+}));
+var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+
+map.on('click', 'lyr_Entwurfselement_Hoehe_0_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PAD_A</th>\
+                        <td>' + (e.features[0].properties['PAD_A'] !== null ? autolinker.link(e.features[0].properties['PAD_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PAD_E</th>\
+                        <td>' + (e.features[0].properties['PAD_E'] !== null ? autolinker.link(e.features[0].properties['PAD_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ELTYP</th>\
+                        <td>' + (e.features[0].properties['ELTYP'] !== null ? autolinker.link(e.features[0].properties['ELTYP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ELTYP_L</th>\
+                        <td>' + (e.features[0].properties['ELTYP_L'] !== null ? autolinker.link(e.features[0].properties['ELTYP_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM1</th>\
+                        <td>' + (e.features[0].properties['PARAM1'] !== null ? autolinker.link(e.features[0].properties['PARAM1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM2</th>\
+                        <td>' + (e.features[0].properties['PARAM2'] !== null ? autolinker.link(e.features[0].properties['PARAM2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM3</th>\
+                        <td>' + (e.features[0].properties['PARAM3'] !== null ? autolinker.link(e.features[0].properties['PARAM3'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM4</th>\
+                        <td>' + (e.features[0].properties['PARAM4'] !== null ? autolinker.link(e.features[0].properties['PARAM4'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HSYS</th>\
+                        <td>' + (e.features[0].properties['HSYS'] !== null ? autolinker.link(e.features[0].properties['HSYS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HSYS_1</th>\
+                        <td>' + (e.features[0].properties['HSYS_1'] !== null ? autolinker.link(e.features[0].properties['HSYS_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HSYS_1_L</th>\
+                        <td>' + (e.features[0].properties['HSYS_1_L'] !== null ? autolinker.link(e.features[0].properties['HSYS_1_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HSYS_23</th>\
+                        <td>' + (e.features[0].properties['HSYS_23'] !== null ? autolinker.link(e.features[0].properties['HSYS_23'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HSYS_23_L</th>\
+                        <td>' + (e.features[0].properties['HSYS_23_L'] !== null ? autolinker.link(e.features[0].properties['HSYS_23_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A</th>\
+                        <td>' + (e.features[0].properties['KM_A'] !== null ? autolinker.link(e.features[0].properties['KM_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_A_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_A_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_KM</th>\
+                        <td>' + (e.features[0].properties['KM_A_KM'] !== null ? autolinker.link(e.features[0].properties['KM_A_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_M</th>\
+                        <td>' + (e.features[0].properties['KM_A_M'] !== null ? autolinker.link(e.features[0].properties['KM_A_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E</th>\
+                        <td>' + (e.features[0].properties['KM_E'] !== null ? autolinker.link(e.features[0].properties['KM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_E_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_E_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_KM</th>\
+                        <td>' + (e.features[0].properties['KM_E_KM'] !== null ? autolinker.link(e.features[0].properties['KM_E_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_M</th>\
+                        <td>' + (e.features[0].properties['KM_E_M'] !== null ? autolinker.link(e.features[0].properties['KM_E_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE_A</th>\
+                        <td>' + (e.features[0].properties['HOEHE_A'] !== null ? autolinker.link(e.features[0].properties['HOEHE_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE_E</th>\
+                        <td>' + (e.features[0].properties['HOEHE_E'] !== null ? autolinker.link(e.features[0].properties['HOEHE_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE_A_R</th>\
+                        <td>' + (e.features[0].properties['HOEHE_A_R'] !== null ? autolinker.link(e.features[0].properties['HOEHE_A_R'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE_E_R</th>\
+                        <td>' + (e.features[0].properties['HOEHE_E_R'] !== null ? autolinker.link(e.features[0].properties['HOEHE_E_R'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LAGERICHT</th>\
+                        <td>' + (e.features[0].properties['LAGERICHT'] !== null ? autolinker.link(e.features[0].properties['LAGERICHT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Entwurfselement_Hoehe_0_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Entwurfselement_Hoehe_0_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Entwurfselement_Lage_1_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">height</th>\
+                        <td>' + (e.features[0].properties['height'] !== null ? autolinker.link(e.features[0].properties['height'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Entwurfselement_Lage_1_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Entwurfselement_Lage_1_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Entwurfselement_Ueberhoehung_2_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PAD_A</th>\
+                        <td>' + (e.features[0].properties['PAD_A'] !== null ? autolinker.link(e.features[0].properties['PAD_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PAD_E</th>\
+                        <td>' + (e.features[0].properties['PAD_E'] !== null ? autolinker.link(e.features[0].properties['PAD_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ELTYP</th>\
+                        <td>' + (e.features[0].properties['ELTYP'] !== null ? autolinker.link(e.features[0].properties['ELTYP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ELTYP_L</th>\
+                        <td>' + (e.features[0].properties['ELTYP_L'] !== null ? autolinker.link(e.features[0].properties['ELTYP_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM1</th>\
+                        <td>' + (e.features[0].properties['PARAM1'] !== null ? autolinker.link(e.features[0].properties['PARAM1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM2</th>\
+                        <td>' + (e.features[0].properties['PARAM2'] !== null ? autolinker.link(e.features[0].properties['PARAM2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM3</th>\
+                        <td>' + (e.features[0].properties['PARAM3'] !== null ? autolinker.link(e.features[0].properties['PARAM3'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PARAM4</th>\
+                        <td>' + (e.features[0].properties['PARAM4'] !== null ? autolinker.link(e.features[0].properties['PARAM4'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKKN</th>\
+                        <td>' + (e.features[0].properties['STRECKKN'] !== null ? autolinker.link(e.features[0].properties['STRECKKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A</th>\
+                        <td>' + (e.features[0].properties['KM_A'] !== null ? autolinker.link(e.features[0].properties['KM_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_A_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_A_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_KM</th>\
+                        <td>' + (e.features[0].properties['KM_A_KM'] !== null ? autolinker.link(e.features[0].properties['KM_A_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_M</th>\
+                        <td>' + (e.features[0].properties['KM_A_M'] !== null ? autolinker.link(e.features[0].properties['KM_A_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E</th>\
+                        <td>' + (e.features[0].properties['KM_E'] !== null ? autolinker.link(e.features[0].properties['KM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_E_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_E_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_KM</th>\
+                        <td>' + (e.features[0].properties['KM_E_KM'] !== null ? autolinker.link(e.features[0].properties['KM_E_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_M</th>\
+                        <td>' + (e.features[0].properties['KM_E_M'] !== null ? autolinker.link(e.features[0].properties['KM_E_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LAGERICHT</th>\
+                        <td>' + (e.features[0].properties['LAGERICHT'] !== null ? autolinker.link(e.features[0].properties['LAGERICHT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Entwurfselement_Ueberhoehung_2_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Entwurfselement_Ueberhoehung_2_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Gleis_Strecke_Abschnitt_Hoehe_3_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">EELH_MIGID</th>\
+                        <td>' + (e.features[0].properties['EELH_MIGID'] !== null ? autolinker.link(e.features[0].properties['EELH_MIGID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKA_ID</th>\
+                        <td>' + (e.features[0].properties['GKA_ID'] !== null ? autolinker.link(e.features[0].properties['GKA_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKA_MIGID</th>\
+                        <td>' + (e.features[0].properties['GKA_MIGID'] !== null ? autolinker.link(e.features[0].properties['GKA_MIGID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE_A</th>\
+                        <td>' + (e.features[0].properties['HOEHE_A'] !== null ? autolinker.link(e.features[0].properties['HOEHE_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE_E</th>\
+                        <td>' + (e.features[0].properties['HOEHE_E'] !== null ? autolinker.link(e.features[0].properties['HOEHE_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A</th>\
+                        <td>' + (e.features[0].properties['KM_A'] !== null ? autolinker.link(e.features[0].properties['KM_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_A_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_A_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_KM</th>\
+                        <td>' + (e.features[0].properties['KM_A_KM'] !== null ? autolinker.link(e.features[0].properties['KM_A_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_M</th>\
+                        <td>' + (e.features[0].properties['KM_A_M'] !== null ? autolinker.link(e.features[0].properties['KM_A_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E</th>\
+                        <td>' + (e.features[0].properties['KM_E'] !== null ? autolinker.link(e.features[0].properties['KM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_E_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_E_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_KM</th>\
+                        <td>' + (e.features[0].properties['KM_E_KM'] !== null ? autolinker.link(e.features[0].properties['KM_E_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_M</th>\
+                        <td>' + (e.features[0].properties['KM_E_M'] !== null ? autolinker.link(e.features[0].properties['KM_E_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STAT_A</th>\
+                        <td>' + (e.features[0].properties['STAT_A'] !== null ? autolinker.link(e.features[0].properties['STAT_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STAT_E</th>\
+                        <td>' + (e.features[0].properties['STAT_E'] !== null ? autolinker.link(e.features[0].properties['STAT_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Gleis_Strecke_Abschnitt_Hoehe_3_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Gleis_Strecke_Abschnitt_Hoehe_3_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Gleis_Strecke_Abschnitt_Lage_4_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">EELL_MIGID</th>\
+                        <td>' + (e.features[0].properties['EELL_MIGID'] !== null ? autolinker.link(e.features[0].properties['EELL_MIGID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A</th>\
+                        <td>' + (e.features[0].properties['KM_A'] !== null ? autolinker.link(e.features[0].properties['KM_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_A_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_A_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_KM</th>\
+                        <td>' + (e.features[0].properties['KM_A_KM'] !== null ? autolinker.link(e.features[0].properties['KM_A_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_M</th>\
+                        <td>' + (e.features[0].properties['KM_A_M'] !== null ? autolinker.link(e.features[0].properties['KM_A_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E</th>\
+                        <td>' + (e.features[0].properties['KM_E'] !== null ? autolinker.link(e.features[0].properties['KM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_E_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_E_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_KM</th>\
+                        <td>' + (e.features[0].properties['KM_E_KM'] !== null ? autolinker.link(e.features[0].properties['KM_E_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_M</th>\
+                        <td>' + (e.features[0].properties['KM_E_M'] !== null ? autolinker.link(e.features[0].properties['KM_E_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKA_ID</th>\
+                        <td>' + (e.features[0].properties['GKA_ID'] !== null ? autolinker.link(e.features[0].properties['GKA_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKA_MIGID</th>\
+                        <td>' + (e.features[0].properties['GKA_MIGID'] !== null ? autolinker.link(e.features[0].properties['GKA_MIGID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Gleis_Strecke_Abschnitt_Lage_4_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Gleis_Strecke_Abschnitt_Lage_4_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Gleis_Strecke_Abschnitt_Ueberhoehung_5_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">EELU_MIGID</th>\
+                        <td>' + (e.features[0].properties['EELU_MIGID'] !== null ? autolinker.link(e.features[0].properties['EELU_MIGID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKA_ID</th>\
+                        <td>' + (e.features[0].properties['GKA_ID'] !== null ? autolinker.link(e.features[0].properties['GKA_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKA_MIGID</th>\
+                        <td>' + (e.features[0].properties['GKA_MIGID'] !== null ? autolinker.link(e.features[0].properties['GKA_MIGID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A</th>\
+                        <td>' + (e.features[0].properties['KM_A'] !== null ? autolinker.link(e.features[0].properties['KM_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_A_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_A_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_KM</th>\
+                        <td>' + (e.features[0].properties['KM_A_KM'] !== null ? autolinker.link(e.features[0].properties['KM_A_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_A_M</th>\
+                        <td>' + (e.features[0].properties['KM_A_M'] !== null ? autolinker.link(e.features[0].properties['KM_A_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E</th>\
+                        <td>' + (e.features[0].properties['KM_E'] !== null ? autolinker.link(e.features[0].properties['KM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_E_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_E_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_KM</th>\
+                        <td>' + (e.features[0].properties['KM_E_KM'] !== null ? autolinker.link(e.features[0].properties['KM_E_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_E_M</th>\
+                        <td>' + (e.features[0].properties['KM_E_M'] !== null ? autolinker.link(e.features[0].properties['KM_E_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STAT_A</th>\
+                        <td>' + (e.features[0].properties['STAT_A'] !== null ? autolinker.link(e.features[0].properties['STAT_A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STAT_E</th>\
+                        <td>' + (e.features[0].properties['STAT_E'] !== null ? autolinker.link(e.features[0].properties['STAT_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Gleis_Strecke_Abschnitt_Ueberhoehung_5_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Gleis_Strecke_Abschnitt_Ueberhoehung_5_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Gleiskanten_6_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKN_ID_VON</th>\
+                        <td>' + (e.features[0].properties['GKN_ID_VON'] !== null ? autolinker.link(e.features[0].properties['GKN_ID_VON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KNOTENNAME</th>\
+                        <td>' + (e.features[0].properties['KNOTENNAME'] !== null ? autolinker.link(e.features[0].properties['KNOTENNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100_VON</th>\
+                        <td>' + (e.features[0].properties['RL100_VON'] !== null ? autolinker.link(e.features[0].properties['RL100_VON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID_VO</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID_VO'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID_VO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME_</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME_'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRELLENNU</th>\
+                        <td>' + (e.features[0].properties['STRELLENNU'] !== null ? autolinker.link(e.features[0].properties['STRELLENNU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKN_MIG_ID</th>\
+                        <td>' + (e.features[0].properties['GKN_MIG_ID'] !== null ? autolinker.link(e.features[0].properties['GKN_MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKN_ID_BIS</th>\
+                        <td>' + (e.features[0].properties['GKN_ID_BIS'] !== null ? autolinker.link(e.features[0].properties['GKN_ID_BIS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KNOTENNA_1</th>\
+                        <td>' + (e.features[0].properties['KNOTENNA_1'] !== null ? autolinker.link(e.features[0].properties['KNOTENNA_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100_BIS</th>\
+                        <td>' + (e.features[0].properties['RL100_BIS'] !== null ? autolinker.link(e.features[0].properties['RL100_BIS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID_BI</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID_BI'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID_BI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAM_1</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAM_1'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAM_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRELLEN_1</th>\
+                        <td>' + (e.features[0].properties['STRELLEN_1'] !== null ? autolinker.link(e.features[0].properties['STRELLEN_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GKN_MIG__1</th>\
+                        <td>' + (e.features[0].properties['GKN_MIG__1'] !== null ? autolinker.link(e.features[0].properties['GKN_MIG__1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">FREMDBEZ</th>\
+                        <td>' + (e.features[0].properties['FREMDBEZ'] !== null ? autolinker.link(e.features[0].properties['FREMDBEZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_PLAT</th>\
+                        <td>' + (e.features[0].properties['TECHN_PLAT'] !== null ? autolinker.link(e.features[0].properties['TECHN_PLAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ERSTERFASS</th>\
+                        <td>' + (e.features[0].properties['ERSTERFASS'] !== null ? autolinker.link(e.features[0].properties['ERSTERFASS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ERSTERF_DA</th>\
+                        <td>' + (e.features[0].properties['ERSTERF_DA'] !== null ? autolinker.link(e.features[0].properties['ERSTERF_DA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEARBEITER</th>\
+                        <td>' + (e.features[0].properties['BEARBEITER'] !== null ? autolinker.link(e.features[0].properties['BEARBEITER'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEARB_DATU</th>\
+                        <td>' + (e.features[0].properties['BEARB_DATU'] !== null ? autolinker.link(e.features[0].properties['BEARB_DATU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PROGRAMM</th>\
+                        <td>' + (e.features[0].properties['PROGRAMM'] !== null ? autolinker.link(e.features[0].properties['PROGRAMM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFTRAG</th>\
+                        <td>' + (e.features[0].properties['AUFTRAG'] !== null ? autolinker.link(e.features[0].properties['AUFTRAG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KOMMENTAR</th>\
+                        <td>' + (e.features[0].properties['KOMMENTAR'] !== null ? autolinker.link(e.features[0].properties['KOMMENTAR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LAENGE_ENT</th>\
+                        <td>' + (e.features[0].properties['LAENGE_ENT'] !== null ? autolinker.link(e.features[0].properties['LAENGE_ENT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LAENGE_GK3</th>\
+                        <td>' + (e.features[0].properties['LAENGE_GK3'] !== null ? autolinker.link(e.features[0].properties['LAENGE_GK3'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEGUN</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEGUN'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEGUN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_1</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_1'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DATENQUELL</th>\
+                        <td>' + (e.features[0].properties['DATENQUELL'] !== null ? autolinker.link(e.features[0].properties['DATENQUELL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DATENQUE_1</th>\
+                        <td>' + (e.features[0].properties['DATENQUE_1'] !== null ? autolinker.link(e.features[0].properties['DATENQUE_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEGMEN</th>\
+                        <td>' + (e.features[0].properties['GIS_SEGMEN'] !== null ? autolinker.link(e.features[0].properties['GIS_SEGMEN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GLS_STELLW</th>\
+                        <td>' + (e.features[0].properties['GLS_STELLW'] !== null ? autolinker.link(e.features[0].properties['GLS_STELLW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GLS_GLEISN</th>\
+                        <td>' + (e.features[0].properties['GLS_GLEISN'] !== null ? autolinker.link(e.features[0].properties['GLS_GLEISN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENNU</th>\
+                        <td>' + (e.features[0].properties['STRECKENNU'] !== null ? autolinker.link(e.features[0].properties['STRECKENNU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENKU</th>\
+                        <td>' + (e.features[0].properties['STRECKENKU'] !== null ? autolinker.link(e.features[0].properties['STRECKENKU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_VON</th>\
+                        <td>' + (e.features[0].properties['KM_VON'] !== null ? autolinker.link(e.features[0].properties['KM_VON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT_VO</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT_VO'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT_VO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM_VON</th>\
+                        <td>' + (e.features[0].properties['KM_KM_VON'] !== null ? autolinker.link(e.features[0].properties['KM_KM_VON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M_VON</th>\
+                        <td>' + (e.features[0].properties['KM_M_VON'] !== null ? autolinker.link(e.features[0].properties['KM_M_VON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_BIS</th>\
+                        <td>' + (e.features[0].properties['KM_BIS'] !== null ? autolinker.link(e.features[0].properties['KM_BIS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT_BI</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT_BI'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT_BI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM_BIS</th>\
+                        <td>' + (e.features[0].properties['KM_KM_BIS'] !== null ? autolinker.link(e.features[0].properties['KM_KM_BIS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M_BIS</th>\
+                        <td>' + (e.features[0].properties['KM_M_BIS'] !== null ? autolinker.link(e.features[0].properties['KM_M_BIS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATION_VO</th>\
+                        <td>' + (e.features[0].properties['STATION_VO'] !== null ? autolinker.link(e.features[0].properties['STATION_VO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATION_BI</th>\
+                        <td>' + (e.features[0].properties['STATION_BI'] !== null ? autolinker.link(e.features[0].properties['STATION_BI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">LAGERICHTI</th>\
+                        <td>' + (e.features[0].properties['LAGERICHTI'] !== null ? autolinker.link(e.features[0].properties['LAGERICHTI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Gleiskanten_6_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Gleiskanten_6_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Oberleitungsmasten_7_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAUART</th>\
+                        <td>' + (e.features[0].properties['BAUART'] !== null ? autolinker.link(e.features[0].properties['BAUART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAUART_L</th>\
+                        <td>' + (e.features[0].properties['BAUART_L'] !== null ? autolinker.link(e.features[0].properties['BAUART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MATERIAL</th>\
+                        <td>' + (e.features[0].properties['MATERIAL'] !== null ? autolinker.link(e.features[0].properties['MATERIAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MATERIAL_L</th>\
+                        <td>' + (e.features[0].properties['MATERIAL_L'] !== null ? autolinker.link(e.features[0].properties['MATERIAL_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Oberleitungsmasten_7_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Oberleitungsmasten_7_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_BUE_8_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_BUE_8_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_BUE_8_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_Hauptsignale_9_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_Hauptsignale_9_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_Hauptsignale_9_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_LF_10_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_LF_10_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_LF_10_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_NE_11_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_NE_11_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_NE_11_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_RA_12_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_RA_12_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_RA_12_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_RA12_13_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_RA12_13_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_RA12_13_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_SH_14_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_SH_14_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_SH_14_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_TS_15_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_TS_15_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_TS_15_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+map.on('click', 'lyr_Signal_Vorsignale_16_0', function (e) {
+    var description = '<table>\
+                    <tr>\
+                        <th scope="row">primaryind</th>\
+                        <td>' + (e.features[0].properties['primaryind'] !== null ? autolinker.link(e.features[0].properties['primaryind'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (e.features[0].properties['ID'] !== null ? autolinker.link(e.features[0].properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STW_BZ</th>\
+                        <td>' + (e.features[0].properties['STW_BZ'] !== null ? autolinker.link(e.features[0].properties['STW_BZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BEZEICH</th>\
+                        <td>' + (e.features[0].properties['BEZEICH'] !== null ? autolinker.link(e.features[0].properties['BEZEICH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART</th>\
+                        <td>' + (e.features[0].properties['ART'] !== null ? autolinker.link(e.features[0].properties['ART'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ART_L</th>\
+                        <td>' + (e.features[0].properties['ART_L'] !== null ? autolinker.link(e.features[0].properties['ART_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TECHN_P</th>\
+                        <td>' + (e.features[0].properties['TECHN_P'] !== null ? autolinker.link(e.features[0].properties['TECHN_P'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">HOEHE</th>\
+                        <td>' + (e.features[0].properties['HOEHE'] !== null ? autolinker.link(e.features[0].properties['HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GESCHW</th>\
+                        <td>' + (e.features[0].properties['GESCHW'] !== null ? autolinker.link(e.features[0].properties['GESCHW'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SIGS_HOEHE</th>\
+                        <td>' + (e.features[0].properties['SIGS_HOEHE'] !== null ? autolinker.link(e.features[0].properties['SIGS_HOEHE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RS_ID</th>\
+                        <td>' + (e.features[0].properties['RS_ID'] !== null ? autolinker.link(e.features[0].properties['RS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BUE_ID</th>\
+                        <td>' + (e.features[0].properties['BUE_ID'] !== null ? autolinker.link(e.features[0].properties['BUE_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUFN_GENAU</th>\
+                        <td>' + (e.features[0].properties['AUFN_GENAU'] !== null ? autolinker.link(e.features[0].properties['AUFN_GENAU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">U_EBENE</th>\
+                        <td>' + (e.features[0].properties['U_EBENE'] !== null ? autolinker.link(e.features[0].properties['U_EBENE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DBDSTNAME</th>\
+                        <td>' + (e.features[0].properties['DBDSTNAME'] !== null ? autolinker.link(e.features[0].properties['DBDSTNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RL100</th>\
+                        <td>' + (e.features[0].properties['RL100'] !== null ? autolinker.link(e.features[0].properties['RL100'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NETZ_ID</th>\
+                        <td>' + (e.features[0].properties['NETZ_ID'] !== null ? autolinker.link(e.features[0].properties['NETZ_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">BAHNEIG_L</th>\
+                        <td>' + (e.features[0].properties['BAHNEIG_L'] !== null ? autolinker.link(e.features[0].properties['BAHNEIG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AUSPRAEG_L</th>\
+                        <td>' + (e.features[0].properties['AUSPRAEG_L'] !== null ? autolinker.link(e.features[0].properties['AUSPRAEG_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE</th>\
+                        <td>' + (e.features[0].properties['QUELLE'] !== null ? autolinker.link(e.features[0].properties['QUELLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">QUELLE_L</th>\
+                        <td>' + (e.features[0].properties['QUELLE_L'] !== null ? autolinker.link(e.features[0].properties['QUELLE_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS</th>\
+                        <td>' + (e.features[0].properties['STATUS'] !== null ? autolinker.link(e.features[0].properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATUS_L</th>\
+                        <td>' + (e.features[0].properties['STATUS_L'] !== null ? autolinker.link(e.features[0].properties['STATUS_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_ID</th>\
+                        <td>' + (e.features[0].properties['MIG_ID'] !== null ? autolinker.link(e.features[0].properties['MIG_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">GIS_SEG</th>\
+                        <td>' + (e.features[0].properties['GIS_SEG'] !== null ? autolinker.link(e.features[0].properties['GIS_SEG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">MIG_DATUM</th>\
+                        <td>' + (e.features[0].properties['MIG_DATUM'] !== null ? autolinker.link(e.features[0].properties['MIG_DATUM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKENR</th>\
+                        <td>' + (e.features[0].properties['STRECKENR'] !== null ? autolinker.link(e.features[0].properties['STRECKENR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STRECKEKN</th>\
+                        <td>' + (e.features[0].properties['STRECKEKN'] !== null ? autolinker.link(e.features[0].properties['STRECKEKN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ</th>\
+                        <td>' + (e.features[0].properties['RIKZ'] !== null ? autolinker.link(e.features[0].properties['RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD</th>\
+                        <td>' + (e.features[0].properties['ABBILD'] !== null ? autolinker.link(e.features[0].properties['ABBILD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABBILD_L</th>\
+                        <td>' + (e.features[0].properties['ABBILD_L'] !== null ? autolinker.link(e.features[0].properties['ABBILD_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ABSTAND</th>\
+                        <td>' + (e.features[0].properties['ABSTAND'] !== null ? autolinker.link(e.features[0].properties['ABSTAND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">F_RIKZ_L</th>\
+                        <td>' + (e.features[0].properties['F_RIKZ_L'] !== null ? autolinker.link(e.features[0].properties['F_RIKZ_L'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM</th>\
+                        <td>' + (e.features[0].properties['KM'] !== null ? autolinker.link(e.features[0].properties['KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_TEXT</th>\
+                        <td>' + (e.features[0].properties['KM_TEXT'] !== null ? autolinker.link(e.features[0].properties['KM_TEXT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_KM</th>\
+                        <td>' + (e.features[0].properties['KM_KM'] !== null ? autolinker.link(e.features[0].properties['KM_KM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">KM_M</th>\
+                        <td>' + (e.features[0].properties['KM_M'] !== null ? autolinker.link(e.features[0].properties['KM_M'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PD</th>\
+                        <td>' + (e.features[0].properties['PD'] !== null ? autolinker.link(e.features[0].properties['PD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">PLANADRES</th>\
+                        <td>' + (e.features[0].properties['PLANADRES'] !== null ? autolinker.link(e.features[0].properties['PLANADRES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NL</th>\
+                        <td>' + (e.features[0].properties['NL'] !== null ? autolinker.link(e.features[0].properties['NL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>'
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(description)
+        .addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'lyr_Signal_Vorsignale_16_0', function () {
+    map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'lyr_Signal_Vorsignale_16_0', function () {
+    map.getCanvas().style.cursor = '';
+});
+</script>
+    </body>
+</html>
